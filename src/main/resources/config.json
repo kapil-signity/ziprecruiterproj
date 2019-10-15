@@ -1,8 +1,10 @@
 {
   "tieronejobs_4_site":{
-    "dataBaseName":"tieronejobs_4_site"
+    "dataBaseName":"tieronejobs_4_site",
+    "fileName":"tieronejobs_4_site.json"
   },
   "tieronejobs_floor30_site":{
-    "dataBaseName":"tieronejobs_floor30_site"
+    "dataBaseName":"tieronejobs_floor30_site",
+    "fileName":"tieronejobs_floor30_site.json"
   }
 }

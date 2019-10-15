@@ -2,27 +2,27 @@ package com.signity.ziprecruiterproj.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.signity.ziprecruiterproj.configs.CommandArguments;
 import com.signity.ziprecruiterproj.models.LoginCredential;
+import com.signity.ziprecruiterproj.models.ParsedDataModal;
 import com.signity.ziprecruiterproj.models.PropertyFile;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.*;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 import java.io.*;
 import java.lang.reflect.Type;
-import java.net.URL;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.Key;
-import java.security.NoSuchAlgorithmException;
 import java.security.spec.AlgorithmParameterSpec;
-import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
-import java.util.Base64;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.util.*;
 
 @Component
 public class AppUtils {
@@ -33,10 +33,15 @@ public class AppUtils {
     };
     // Iteration count
     int iterationCount = 19;
+    public static String secretKey="signitySecretKey";
 
     @Autowired
     private Gson gson;
 
+    /**
+     * Get Publisher Placements Map
+     * @param
+     */
     public Map<String, PropertyFile> getSourceDataMap(){
         Map<String, PropertyFile> map=null;
         try {
@@ -49,6 +54,10 @@ public class AppUtils {
         return map;
     }
 
+    /**
+     * Get File obj Instance
+     * @param
+     */
     private File getFileObject(String fileName) {
         /*
          * This code will get the file from the resources folder
@@ -57,7 +66,10 @@ public class AppUtils {
         return new File(classLoader.getResource(fileName).getFile());
     }
 
-
+    /**
+     * Get Login Credentials Configs
+     * @param
+     */
     public LoginCredential getLoginCredentials(){
         LoginCredential loginCredential=null;
         try {
@@ -70,15 +82,89 @@ public class AppUtils {
         return loginCredential;
     }
 
+    /**
+     * Get Month to select in Report Dropdown as String
+     * @param
+     * @return String
+     */
+    public String getMonthToSelect() {
+        Integer endDate=CommandArguments.endDate;
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DAY_OF_YEAR,endDate);
+        SimpleDateFormat sfd=new SimpleDateFormat("MMM yyyy");
+        return sfd.format(cal.getTime());
+    }
+
+    /**
+     * Get Event Date Object for Modal by @param dateString
+     * @param dateString
+     * @return Date
+     */
+    public Date getEventDateByString(String dateString){
+        SimpleDateFormat sdfInput=new SimpleDateFormat("MM/dd/yy");
+        Date dateIn= null;
+        try {
+            dateIn = sdfInput.parse(dateString);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateIn;
+    }
+
+    /**
+     * Save ParsedDataModalList as File
+     * @param parsedDataModals list of parsedDataModal for File
+     * @param fileName name of file to store
+     * @return void
+     */
+    public void saveJsonData(List<ParsedDataModal> parsedDataModals, String fileName){
+        try {
+            FileWriter fr=new FileWriter(fileName,true);
+            fr.write(gson.toJson(parsedDataModals));
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Save ParsedDataModalList as File
+     * @param parsedDataModals list of parsedDataModal for File
+     * @param fileName name of file to store
+     * @return void
+     */
+    public void saveRedshiftData(List<ParsedDataModal> parsedDataModals, String fileName){
+        try {
+            FileWriter fstream=new FileWriter(fileName,true);
+            BufferedWriter out = new BufferedWriter(fstream);
+            for(ParsedDataModal data:parsedDataModals){
+                out.write(gson.toJson(data));
+                out.newLine();
+            }
+            out.close();
+            fstream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     * removeNonDigitChars
+     * @param input alphanumeric charsequence
+     * @return string numeric string
+     */
+    public String removeNonDigitChars(String input){
+        return input.replaceAll("[^\\d.]","");
+    }
+
 
     public static void main(String[] args) throws Exception {
         AppUtils cryptoUtil=new AppUtils();
-        String key="ezeon8547";
-        String plain="This is an important message";
-        String enc=cryptoUtil.encrypt(key, plain);
+        String plain="sarasota97";
+        String enc=cryptoUtil.encrypt(secretKey, plain);
         System.out.println("Original text: "+plain);
         System.out.println("Encrypted text: "+enc);
-        String plainAfter=cryptoUtil.decrypt(key, enc);
+        String plainAfter=cryptoUtil.decrypt(secretKey, enc);
         System.out.println("Original text after decryption: "+plainAfter);
     }
 

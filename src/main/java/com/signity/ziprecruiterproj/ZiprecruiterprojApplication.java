@@ -22,11 +22,14 @@ public class ZiprecruiterprojApplication implements CommandLineRunner {
         argumentHandler(args);
         System.out.println(CommandArguments.jobSourceName);
         reportGenerator.generateReport();
-        while(true){}
-       //
     }
 
 
+    /**
+     * Handle Command Line Argument
+     *
+     * @param args arg array
+     */
     private void argumentHandler(String[] args) {
         Options options = new Options();
 
@@ -57,13 +60,15 @@ public class ZiprecruiterprojApplication implements CommandLineRunner {
         CommandArguments.jobSourceName = cmd.getOptionValue("jobSource");
 
         if(CommandArguments.jobSourceName==null || CommandArguments.jobSourceName.equals("")){
-
+            throw new RuntimeException("jobSource arg is required");
         }
+
         try {
             CommandArguments.startDate = Integer.parseInt(cmd.getOptionValue("startDay"));
         } catch (NumberFormatException e) {
             System.out.println("startDay must be an Integer value");
             e.printStackTrace();
+            System.exit(1);
         }
 
         try {
@@ -71,6 +76,8 @@ public class ZiprecruiterprojApplication implements CommandLineRunner {
         } catch (NumberFormatException e) {
             System.out.println("endDay must be an Integer value");
             e.printStackTrace();
+            System.exit(1);
         }
+
     }
 }
