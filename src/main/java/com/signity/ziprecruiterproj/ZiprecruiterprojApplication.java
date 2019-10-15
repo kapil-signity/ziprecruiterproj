@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.File;
+
 @SpringBootApplication
 public class ZiprecruiterprojApplication implements CommandLineRunner {
 
@@ -19,9 +21,30 @@ public class ZiprecruiterprojApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        init();
         argumentHandler(args);
         System.out.println(CommandArguments.jobSourceName);
         reportGenerator.generateReport();
+    }
+
+    /**
+     * Initialize initial Requirements
+     */
+    private void init() {
+        File parseDataFolder=new File("parseData");
+        if(!parseDataFolder.exists()){
+            parseDataFolder.mkdir();
+        }
+        
+        File jsonDir=new File("parseData/json");
+        if(!jsonDir.exists()){
+            jsonDir.mkdir();
+        }
+
+        File redshiftDir=new File("parseData/redshift");
+        if(!redshiftDir.exists()){
+            redshiftDir.mkdir();
+        }
     }
 
 
