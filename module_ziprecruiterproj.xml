@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_ziprecruiterproj" default="compile.module.ziprecruiterproj">
+  <dirname property="module.ziprecruiterproj.basedir" file="${ant.file.module_ziprecruiterproj}"/>
+  
+  <property name="module.jdk.home.ziprecruiterproj" value="${jdk.home.1.8}"/>
+  <property name="module.jdk.bin.ziprecruiterproj" value="${jdk.bin.1.8}"/>
+  <property name="module.jdk.classpath.ziprecruiterproj" value="jdk.classpath.1.8"/>
+  
+  <property name="compiler.args.ziprecruiterproj" value="-encoding UTF-8 -source 8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="ziprecruiterproj.output.dir" value="${module.ziprecruiterproj.basedir}/target/classes"/>
+  <property name="ziprecruiterproj.testoutput.dir" value="${module.ziprecruiterproj.basedir}/target/test-classes"/>
+  
+  <path id="ziprecruiterproj.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="ziprecruiterproj.module.production.classpath">
+    <path refid="${module.jdk.classpath.ziprecruiterproj}"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-autoconfigure:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-logging:2.1.9.release.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-classic:1.2.3.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-core:1.2.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-to-slf4j:2.11.2.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.11.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.28.classpath"/>
+    <path refid="library.maven:_javax.annotation:javax.annotation-api:1.3.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jcl:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-java:3.141.59.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-api:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-edge-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.10.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.12.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-firefox-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-ie-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-opera-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-remote-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-safari-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy:1.9.16.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-exec:1.3.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:25.0-jre.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath"/>
+    <path refid="library.maven:_org.checkerframework:checker-compat-qual:2.0.0.classpath"/>
+    <path refid="library.maven:_com.google.errorprone:error_prone_annotations:2.1.3.classpath"/>
+    <path refid="library.maven:_com.google.j2objc:j2objc-annotations:1.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.mojo:animal-sniffer-annotations:1.14.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp3:okhttp:3.11.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-support:3.141.59.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-chrome-driver:3.141.59.classpath"/>
+    <path refid="library.maven:_commons-cli:commons-cli:1.4.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.10.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.9.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.8.6.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-configuration-processor:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.28.classpath"/>
+  </path>
+  
+  <path id="ziprecruiterproj.runtime.production.module.classpath">
+    <pathelement location="${ziprecruiterproj.output.dir}"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-autoconfigure:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-logging:2.1.9.release.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-classic:1.2.3.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-core:1.2.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-to-slf4j:2.11.2.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.11.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.28.classpath"/>
+    <path refid="library.maven:_javax.annotation:javax.annotation-api:1.3.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jcl:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.23.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-java:3.141.59.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-api:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-edge-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.10.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.12.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-firefox-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-ie-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-opera-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-remote-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-safari-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy:1.9.16.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-exec:1.3.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:25.0-jre.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath"/>
+    <path refid="library.maven:_org.checkerframework:checker-compat-qual:2.0.0.classpath"/>
+    <path refid="library.maven:_com.google.errorprone:error_prone_annotations:2.1.3.classpath"/>
+    <path refid="library.maven:_com.google.j2objc:j2objc-annotations:1.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.mojo:animal-sniffer-annotations:1.14.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp3:okhttp:3.11.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-support:3.141.59.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-chrome-driver:3.141.59.classpath"/>
+    <path refid="library.maven:_commons-cli:commons-cli:1.4.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.10.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.9.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.8.6.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-configuration-processor:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.28.classpath"/>
+  </path>
+  
+  <path id="ziprecruiterproj.module.classpath">
+    <path refid="${module.jdk.classpath.ziprecruiterproj}"/>
+    <pathelement location="${ziprecruiterproj.output.dir}"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-autoconfigure:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-logging:2.1.9.release.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-classic:1.2.3.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-core:1.2.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-to-slf4j:2.11.2.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.11.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.28.classpath"/>
+    <path refid="library.maven:_javax.annotation:javax.annotation-api:1.3.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jcl:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.23.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-java:3.141.59.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-api:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-edge-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.10.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.12.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-firefox-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-ie-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-opera-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-remote-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-safari-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy:1.9.16.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-exec:1.3.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:25.0-jre.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath"/>
+    <path refid="library.maven:_org.checkerframework:checker-compat-qual:2.0.0.classpath"/>
+    <path refid="library.maven:_com.google.errorprone:error_prone_annotations:2.1.3.classpath"/>
+    <path refid="library.maven:_com.google.j2objc:j2objc-annotations:1.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.mojo:animal-sniffer-annotations:1.14.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp3:okhttp:3.11.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-support:3.141.59.classpath"/>
+    <path refid="library.maven:_junit:junit:4.13-beta-3.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-chrome-driver:3.141.59.classpath"/>
+    <path refid="library.maven:_commons-cli:commons-cli:1.4.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.10.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.9.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.8.6.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-configuration-processor:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-test:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-test:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-test-autoconfigure:2.1.9.release.classpath"/>
+    <path refid="library.maven:_com.jayway.jsonpath:json-path:2.4.0.classpath"/>
+    <path refid="library.maven:_net.minidev:json-smart:2.3.classpath"/>
+    <path refid="library.maven:_net.minidev:accessors-smart:1.2.classpath"/>
+    <path refid="library.maven:_org.ow2.asm:asm:5.0.4.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.28.classpath"/>
+    <path refid="library.maven:_org.assertj:assertj-core:3.11.1.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:2.23.4.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy-agent:1.9.16.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:2.6.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-library:1.3.classpath"/>
+    <path refid="library.maven:_org.skyscreamer:jsonassert:1.5.0.classpath"/>
+    <path refid="library.maven:_com.vaadin.external.google:android-json:0.0.20131108.vaadin1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.xmlunit:xmlunit-core:2.6.3.classpath"/>
+  </path>
+  
+  <path id="ziprecruiterproj.runtime.module.classpath">
+    <pathelement location="${ziprecruiterproj.testoutput.dir}"/>
+    <pathelement location="${ziprecruiterproj.output.dir}"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-context:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-aop:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-beans:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-expression:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-autoconfigure:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-logging:2.1.9.release.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-classic:1.2.3.classpath"/>
+    <path refid="library.maven:_ch.qos.logback:logback-core:1.2.3.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-to-slf4j:2.11.2.classpath"/>
+    <path refid="library.maven:_org.apache.logging.log4j:log4j-api:2.11.2.classpath"/>
+    <path refid="library.maven:_org.slf4j:jul-to-slf4j:1.7.28.classpath"/>
+    <path refid="library.maven:_javax.annotation:javax.annotation-api:1.3.2.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-core:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-jcl:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.yaml:snakeyaml:1.23.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-java:3.141.59.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-api:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-edge-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_commons-codec:commons-codec:1.11.classpath"/>
+    <path refid="library.maven:_commons-logging:commons-logging:1.2.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpclient:4.5.10.classpath"/>
+    <path refid="library.maven:_org.apache.httpcomponents:httpcore:4.4.12.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-firefox-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-ie-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-opera-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-remote-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-safari-driver:3.14.0.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy:1.9.16.classpath"/>
+    <path refid="library.maven:_org.apache.commons:commons-exec:1.3.classpath"/>
+    <path refid="library.maven:_com.google.guava:guava:25.0-jre.classpath"/>
+    <path refid="library.maven:_com.google.code.findbugs:jsr305:1.3.9.classpath"/>
+    <path refid="library.maven:_org.checkerframework:checker-compat-qual:2.0.0.classpath"/>
+    <path refid="library.maven:_com.google.errorprone:error_prone_annotations:2.1.3.classpath"/>
+    <path refid="library.maven:_com.google.j2objc:j2objc-annotations:1.1.classpath"/>
+    <path refid="library.maven:_org.codehaus.mojo:animal-sniffer-annotations:1.14.classpath"/>
+    <path refid="library.maven:_com.squareup.okhttp3:okhttp:3.11.0.classpath"/>
+    <path refid="library.maven:_com.squareup.okio:okio:1.14.0.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-support:3.141.59.classpath"/>
+    <path refid="library.maven:_junit:junit:4.13-beta-3.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-core:1.3.classpath"/>
+    <path refid="library.maven:_org.seleniumhq.selenium:selenium-chrome-driver:3.141.59.classpath"/>
+    <path refid="library.maven:_commons-cli:commons-cli:1.4.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-databind:2.10.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-annotations:2.9.0.classpath"/>
+    <path refid="library.maven:_com.fasterxml.jackson.core:jackson-core:2.9.9.classpath"/>
+    <path refid="library.maven:_com.google.code.gson:gson:2.8.6.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-configuration-processor:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-starter-test:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-test:2.1.9.release.classpath"/>
+    <path refid="library.maven:_org.springframework.boot:spring-boot-test-autoconfigure:2.1.9.release.classpath"/>
+    <path refid="library.maven:_com.jayway.jsonpath:json-path:2.4.0.classpath"/>
+    <path refid="library.maven:_net.minidev:json-smart:2.3.classpath"/>
+    <path refid="library.maven:_net.minidev:accessors-smart:1.2.classpath"/>
+    <path refid="library.maven:_org.ow2.asm:asm:5.0.4.classpath"/>
+    <path refid="library.maven:_org.slf4j:slf4j-api:1.7.28.classpath"/>
+    <path refid="library.maven:_org.assertj:assertj-core:3.11.1.classpath"/>
+    <path refid="library.maven:_org.mockito:mockito-core:2.23.4.classpath"/>
+    <path refid="library.maven:_net.bytebuddy:byte-buddy-agent:1.9.16.classpath"/>
+    <path refid="library.maven:_org.objenesis:objenesis:2.6.classpath"/>
+    <path refid="library.maven:_org.hamcrest:hamcrest-library:1.3.classpath"/>
+    <path refid="library.maven:_org.skyscreamer:jsonassert:1.5.0.classpath"/>
+    <path refid="library.maven:_com.vaadin.external.google:android-json:0.0.20131108.vaadin1.classpath"/>
+    <path refid="library.maven:_org.springframework:spring-test:5.1.10.release.classpath"/>
+    <path refid="library.maven:_org.xmlunit:xmlunit-core:2.6.3.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.ziprecruiterproj">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.ziprecruiterproj">
+    <patternset refid="excluded.from.module.ziprecruiterproj"/>
+  </patternset>
+  
+  <path id="ziprecruiterproj.module.sourcepath">
+    <dirset dir="${module.ziprecruiterproj.basedir}">
+      <include name="src/main/java"/>
+      <include name="src/main/resources"/>
+    </dirset>
+  </path>
+  
+  <path id="ziprecruiterproj.module.test.sourcepath">
+    <dirset dir="${module.ziprecruiterproj.basedir}">
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.ziprecruiterproj" depends="compile.module.ziprecruiterproj.production,compile.module.ziprecruiterproj.tests" description="Compile module ziprecruiterproj"/>
+  
+  <target name="compile.module.ziprecruiterproj.production" depends="register.custom.compilers" description="Compile module ziprecruiterproj; production classes">
+    <mkdir dir="${ziprecruiterproj.output.dir}"/>
+    <javac2 destdir="${ziprecruiterproj.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.ziprecruiterproj}/javac">
+      <compilerarg line="${compiler.args.ziprecruiterproj}"/>
+      <bootclasspath refid="ziprecruiterproj.module.bootclasspath"/>
+      <classpath refid="ziprecruiterproj.module.production.classpath"/>
+      <src refid="ziprecruiterproj.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.ziprecruiterproj"/>
+    </javac2>
+    
+    <copy todir="${ziprecruiterproj.output.dir}">
+      <fileset dir="${module.ziprecruiterproj.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.ziprecruiterproj.basedir}/src/main/resources">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.ziprecruiterproj.tests" depends="register.custom.compilers,compile.module.ziprecruiterproj.production" description="compile module ziprecruiterproj; test classes" unless="skip.tests">
+    <mkdir dir="${ziprecruiterproj.testoutput.dir}"/>
+    <javac2 destdir="${ziprecruiterproj.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.ziprecruiterproj}/javac">
+      <compilerarg line="${compiler.args.ziprecruiterproj}"/>
+      <bootclasspath refid="ziprecruiterproj.module.bootclasspath"/>
+      <classpath refid="ziprecruiterproj.module.classpath"/>
+      <src refid="ziprecruiterproj.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.ziprecruiterproj"/>
+    </javac2>
+    
+    <copy todir="${ziprecruiterproj.testoutput.dir}">
+      <fileset dir="${module.ziprecruiterproj.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.ziprecruiterproj" description="cleanup module">
+    <delete dir="${ziprecruiterproj.output.dir}"/>
+    <delete dir="${ziprecruiterproj.testoutput.dir}"/>
+  </target>
+</project>

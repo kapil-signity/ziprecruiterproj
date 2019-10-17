@@ -1,34 +1,49 @@
 package com.signity.ziprecruiterproj.models;
 
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 public class PropertyFile {
-    private String dataBaseName;
-    private String fileName;
+	private String dataBaseName;
+	private String fileName;
+	private String filePath;
 
-    public String getDataBaseName() {
-        return dataBaseName;
-    }
+	/**
+	 * @return the filePath
+	 */
+	public String getFilePath() {
+		return filePath;
+	}
 
-    public void setDataBaseName(String dataBaseName) {
-        this.dataBaseName = dataBaseName;
-    }
+	/**
+	 * @param filePath
+	 *            the filePath to set
+	 */
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
 
-    public String getFileName() {
-        return fileName;
-    }
+	public String getDataBaseName() {
+		return dataBaseName;
+	}
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
+	public void setDataBaseName(String dataBaseName) {
+		this.dataBaseName = dataBaseName;
+	}
 
-    @Override
-    public String toString() {
-        return "PropertyFile{" +
-                "dataBaseName='" + dataBaseName + '\'' +
-                ", fileName='" + fileName + '\'' +
-                '}';
-    }
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "PropertyFile [dataBaseName=" + dataBaseName + ", fileName=" + fileName + ", filePath=" + filePath + "]";
+	}
+
 }
